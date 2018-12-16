@@ -1,0 +1,15 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:2-stretch
+    steps:
+      - checkout
+      - run: |
+          echo "${CIRCLE_SHA1}" > artifact
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
